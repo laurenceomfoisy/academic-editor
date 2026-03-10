@@ -26,6 +26,8 @@
 - Installed `gt` on the machine and added a Gastown-inspired orchestration layer to the repo.
 - Added structured handoff contracts across the specialist subagent prompts.
 - Made `academic-writer` automatically create and manage the bead or convoy structure for new paper workflows.
+- Added `academic-planner` as a primary mentor agent that hands approved article plans to `academic-writer`.
+- Added an explicit planner-to-writer handoff template for `academic-planner`.
 
 ## Next build stones
 

@@ -1,6 +1,17 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "agent": {
+    "academic-planner": {
+      "mode": "primary",
+      "description": "Mentors political science article design as a pragmatic, senior quantitative scholar focused on publishable paper strategy.",
+      "prompt": "./agents/academic-planner.md",
+      "color": "info",
+      "steps": 5,
+      "permission": {
+        "read": "allow",
+        "question": "allow"
+      }
+    },
     "academic-writer": {
       "mode": "primary",
       "description": "Drafts and revises political science writing with strict source-grounding and KKV-style inferential discipline.",

@@ -2,7 +2,7 @@
 
 ## Core Principle
 
-`academic-writer` is the front-door paper orchestrator. It plans the paper, keeps the argument coherent, delegates specialized work to subagents, integrates the sections into one LaTeX manuscript, and always ends with a `reviewer-2` pressure test.
+`academic-planner` is the planning front door for article design. `academic-writer` is the execution orchestrator. Together they turn a paper idea into a bead-tracked, subagent-driven writing workflow.
 
 By default, specialist subagent use is mandatory rather than optional. `academic-writer` should only skip subagent invocation for pure copyediting or stylistic cleanup with no new substantive content.
 
@@ -27,6 +27,7 @@ The default article structure follows a classic KKV-oriented format:
 
 ## Existing Agents
 
+- `academic-planner` - primary planning mentor
 - `academic-writer` - primary orchestrator
 - `paper-architect` - manuscript-level structure and LaTeX assembly subagent
 - `literature-finder` - retrieval-first source acquisition subagent
@@ -45,11 +46,16 @@ The default article structure follows a classic KKV-oriented format:
 ### Orchestration
 
 - `academic-writer`
-  - plans the paper with the user
+  - executes the approved plan
   - writes in LaTeX by default
   - enforces the article arc and KKV discipline
   - invokes specialist subagents when needed
   - integrates all sections into one paper voice
+
+- `academic-planner`
+  - mentors the user through article design
+  - sharpens the research question, contribution, and structure before drafting
+  - produces a handoff blueprint for `academic-writer`
 
 - `paper-architect`
   - owns manuscript-level structure and LaTeX assembly
@@ -110,19 +116,20 @@ The default article structure follows a classic KKV-oriented format:
 
 ## Workflow Vision
 
-1. `academic-writer` plans the paper
-2. `paper-architect` proposes the manuscript arc
-3. `literature-finder` retrieves sources into `docs/literature/`
-4. `literature-review` maps the field
-5. `theory-hypotheses` builds stance and hypotheses
-6. `data-methods` writes design and code support
-7. `dataviz-editor` proposes the figure strategy
-8. `ggplot-visualizer` builds grayscale figures
-9. `results-writer` writes the empirical narrative
-10. `discussion-limitations` interprets and bounds claims
-11. `conclusion-writer` writes the ending
-12. `paper-architect` assembles the LaTeX paper
-13. `reviewer-2` pressure-tests the manuscript
+1. `academic-planner` plans the paper and produces the blueprint
+2. `academic-writer` starts the execution workflow from the approved blueprint
+3. `paper-architect` proposes the manuscript arc
+4. `literature-finder` retrieves sources into `docs/literature/`
+5. `literature-review` maps the field
+6. `theory-hypotheses` builds stance and hypotheses
+7. `data-methods` writes design and code support
+8. `dataviz-editor` proposes the figure strategy
+9. `ggplot-visualizer` builds grayscale figures
+10. `results-writer` writes the empirical narrative
+11. `discussion-limitations` interprets and bounds claims
+12. `conclusion-writer` writes the ending
+13. `paper-architect` assembles the LaTeX paper
+14. `reviewer-2` pressure-tests the manuscript
 
 Each step should correspond to a bead-backed convoy task and end with a structured handoff to the next specialist role.
 
@@ -130,6 +137,8 @@ Each step should correspond to a bead-backed convoy task and end with a structur
 
 - The literature pipeline already exists and currently stores project-local outputs in `docs/literature/` when run from a project root.
 - `academic-writer` should automatically trigger literature retrieval when new literature claims are needed, but only after planning and query approval.
+- `academic-planner` should remain pre-workflow and should not create beads itself.
+- `academic-writer` should create the bead structure after receiving an approved plan.
 - `literature-finder` and `literature-review` should be separated conceptually even if they initially share tooling.
 - `academic-writer` should support partial workflows too, such as writing only a methods section or revising only a conclusion.
 - Figure production should be split between strategy (`dataviz-editor`) and implementation (`ggplot-visualizer`).

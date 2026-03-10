@@ -4,13 +4,14 @@ Private work-in-progress repository for a shareable OpenCode academic writing sy
 
 ## Purpose
 
-This repository tracks the agent architecture, prompts, and literature retrieval tooling for an `academic-writer` workflow that:
+This repository tracks the agent architecture, prompts, and literature retrieval tooling for an `academic-planner` and `academic-writer` workflow that:
 
 - plans and writes papers in LaTeX
 - follows a classic article arc: hook, research question, literature, theory, hypotheses, data and methods, results, discussion, limitations, conclusion
 - enforces KKV-style inferential discipline
 - retrieves and reads literature before making literature claims
 - keeps article-level coherence through orchestration and review
+- supports a planning-first handoff from `academic-planner` to `academic-writer`
 
 ## Current Contents
 
@@ -38,7 +39,7 @@ See `docs/gastown-workflow.md`.
 
 ## Current Direction
 
-The current build keeps `academic-writer` as the primary orchestrator and now includes a specialist subagent family for:
+The current build uses `academic-planner` as the planning front door and `academic-writer` as the execution orchestrator, with a specialist subagent family for:
 
 - manuscript architecture and LaTeX assembly
 - literature retrieval
@@ -51,6 +52,8 @@ The current build keeps `academic-writer` as the primary orchestrator and now in
 - discussion and limitations
 - conclusion writing
 - severe top-journal style review
+
+`academic-planner` ends with a structured handoff blueprint that `academic-writer` can execute directly.
 
 ## Status
 
