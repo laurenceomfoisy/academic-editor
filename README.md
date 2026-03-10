@@ -176,12 +176,10 @@ Some workflows also assume:
 - Python available for the literature pipeline
 - OpenCode configured at `~/.config/opencode/`
 
-## Install Notes For Repo Access
+## Repo Access
 
-This repository is currently private.
-
-That means a user or installing agent must already have access to:
+Public repository:
 
 - `https://github.com/laurenceomfoisy/academic-editor`
 
-If the repository becomes public later, the installation procedure above can be used as-is.
+Any user or installing agent with standard GitHub access should be able to clone it and follow the install procedure above.

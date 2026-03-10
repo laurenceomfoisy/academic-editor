@@ -11,3 +11,6 @@ research_results_*.json
 # Dolt database files (added by bd init)
 .dolt/
 *.db
+
+# Local beads runtime data
+.beads/
