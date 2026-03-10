@@ -4,6 +4,8 @@
 
 `academic-writer` is the front-door paper orchestrator. It plans the paper, keeps the argument coherent, delegates specialized work to subagents, integrates the sections into one LaTeX manuscript, and always ends with a `reviewer-2` pressure test.
 
+By default, specialist subagent use is mandatory rather than optional. `academic-writer` should only skip subagent invocation for pure copyediting or stylistic cleanup with no new substantive content.
+
 ## Article Logic
 
 The default article structure follows a classic KKV-oriented format:
@@ -22,7 +24,16 @@ The default article structure follows a classic KKV-oriented format:
 ## Existing Agents
 
 - `academic-writer` - primary orchestrator
-- `literature-review` - current literature retrieval and synthesis subagent
+- `paper-architect` - manuscript-level structure and LaTeX assembly subagent
+- `literature-finder` - retrieval-first source acquisition subagent
+- `literature-review` - literature mapping and synthesis subagent
+- `theory-hypotheses` - theory and hypothesis formation subagent
+- `data-methods` - methods and design subagent
+- `dataviz-editor` - visualization strategy subagent
+- `ggplot-visualizer` - grayscale figure implementation subagent
+- `results-writer` - empirical prose subagent
+- `discussion-limitations` - implication and limitations subagent
+- `conclusion-writer` - ending and payoff subagent
 - `reviewer-2` - severe journal-reviewer subagent
 
 ## Planned Agent Split
@@ -115,3 +126,5 @@ The default article structure follows a classic KKV-oriented format:
 - `academic-writer` should automatically trigger literature retrieval when new literature claims are needed, but only after planning and query approval.
 - `literature-finder` and `literature-review` should be separated conceptually even if they initially share tooling.
 - `academic-writer` should support partial workflows too, such as writing only a methods section or revising only a conclusion.
+- Figure production should be split between strategy (`dataviz-editor`) and implementation (`ggplot-visualizer`).
+- The default article style assumes LaTeX assembly and grayscale figures unless the user specifies otherwise.

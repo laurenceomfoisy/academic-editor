@@ -21,7 +21,19 @@ This repository tracks the agent architecture, prompts, and literature retrieval
 
 ## Current Direction
 
-The current build plan is to keep `academic-writer` as the primary orchestrator and add specialist subagents for literature retrieval, literature review, theory, methods, results, data visualization, discussion, conclusion, and paper-level LaTeX assembly.
+The current build keeps `academic-writer` as the primary orchestrator and now includes a specialist subagent family for:
+
+- manuscript architecture and LaTeX assembly
+- literature retrieval
+- literature review and field mapping
+- theory and hypotheses
+- data and methods
+- data visualization strategy
+- grayscale `ggplot` figure implementation
+- results writing
+- discussion and limitations
+- conclusion writing
+- severe top-journal style review
 
 ## Status
 

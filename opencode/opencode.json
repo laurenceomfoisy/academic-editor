@@ -15,6 +15,27 @@
       "color": "warning",
       "steps": 5
     },
+    "paper-architect": {
+      "mode": "subagent",
+      "description": "Designs article structure, LaTeX assembly logic, and manuscript-level coherence for KKV-style political science papers.",
+      "prompt": "./agents/paper-architect.md",
+      "color": "info",
+      "steps": 5
+    },
+    "literature-finder": {
+      "mode": "subagent",
+      "description": "Retrieves and organizes project-local literature artifacts before interpretation or synthesis.",
+      "prompt": "./agents/literature-finder.md",
+      "color": "secondary",
+      "steps": 6,
+      "permission": {
+        "bash": "allow",
+        "read": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "question": "allow"
+      }
+    },
     "literature-review": {
       "mode": "subagent",
       "description": "Finds, retrieves, reads, and synthesizes academic literature with browser automation, explicit source-grounding, and full-text preference.",
@@ -28,6 +49,55 @@
         "websearch": "allow",
         "question": "allow"
       }
+    },
+    "theory-hypotheses": {
+      "mode": "subagent",
+      "description": "Builds theoretical stance, mechanisms, rival explanations, and disciplined hypotheses from source-grounded literature.",
+      "prompt": "./agents/theory-hypotheses.md",
+      "color": "info",
+      "steps": 5
+    },
+    "data-methods": {
+      "mode": "subagent",
+      "description": "Writes transparent KKV-style data and methods sections and supports empirical workflows in Python.",
+      "prompt": "./agents/data-methods.md",
+      "color": "warning",
+      "steps": 6
+    },
+    "ggplot-visualizer": {
+      "mode": "subagent",
+      "description": "Produces grayscale publication-ready ggplot figures, captions, and figure code guidance.",
+      "prompt": "./agents/ggplot-visualizer.md",
+      "color": "secondary",
+      "steps": 5
+    },
+    "dataviz-editor": {
+      "mode": "subagent",
+      "description": "Designs the paper-level visualization strategy and ensures figure diversity and narrative fit.",
+      "prompt": "./agents/dataviz-editor.md",
+      "color": "info",
+      "steps": 5
+    },
+    "results-writer": {
+      "mode": "subagent",
+      "description": "Turns tables, figures, and model output into disciplined political science results prose.",
+      "prompt": "./agents/results-writer.md",
+      "color": "warning",
+      "steps": 5
+    },
+    "discussion-limitations": {
+      "mode": "subagent",
+      "description": "Writes calibrated discussion and highly transparent limitations for scientific articles.",
+      "prompt": "./agents/discussion-limitations.md",
+      "color": "info",
+      "steps": 5
+    },
+    "conclusion-writer": {
+      "mode": "subagent",
+      "description": "Writes compact, thoughtful, high-payoff conclusions for political science articles.",
+      "prompt": "./agents/conclusion-writer.md",
+      "color": "secondary",
+      "steps": 4
     }
   },
   "default_agent": "plan",
