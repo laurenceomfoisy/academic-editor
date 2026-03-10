@@ -1,0 +1,40 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "academic-writer": {
+      "mode": "primary",
+      "description": "Drafts and revises political science writing with strict source-grounding and KKV-style inferential discipline.",
+      "prompt": "./agents/academic-writer.md",
+      "color": "info",
+      "steps": 6
+    },
+    "reviewer-2": {
+      "mode": "subagent",
+      "description": "Pressure-tests political science writing like a severe top-journal reviewer who flags anything weak, vague, or inferentially sloppy.",
+      "prompt": "./agents/reviewer-2.md",
+      "color": "warning",
+      "steps": 5
+    },
+    "literature-review": {
+      "mode": "subagent",
+      "description": "Finds, retrieves, reads, and synthesizes academic literature with browser automation, explicit source-grounding, and full-text preference.",
+      "prompt": "./agents/literature-review.md",
+      "color": "secondary",
+      "steps": 6,
+      "permission": {
+        "bash": "allow",
+        "read": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "question": "allow"
+      }
+    }
+  },
+  "default_agent": "plan",
+  "mcp": {
+    "notion": {
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp"
+    }
+  }
+}

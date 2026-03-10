@@ -1,0 +1,33 @@
+# Literature Retrieval Pipeline Configuration
+
+# Literature storage directory relative to the current project root.
+# Run the pipeline from the project root so outputs land in docs/literature.
+pdf_directory: "docs/literature"
+
+# Unpaywall API configuration
+unpaywall:
+  email: "your.email@example.com"  # Required for Unpaywall API (replace with your email)
+  api_url: "https://api.unpaywall.org/v2"
+
+# Mirror sites for fallback retrieval (in priority order)
+mirrors:
+  - "https://sci-hub.se"
+  - "https://sci-hub.st"
+  - "https://sci-hub.ru"
+
+# Google Scholar search settings
+scholar:
+  max_results: 20  # Maximum papers to retrieve per query
+  year_start: null  # Optional: filter by start year (e.g., 2015)
+  year_end: null    # Optional: filter by end year (e.g., 2024)
+
+# Retry and timeout settings
+retrieval:
+  max_retries: 3
+  timeout_seconds: 30
+  delay_between_requests: 2  # Seconds to wait between requests
+
+# Browser automation settings
+browser:
+  headless: true  # Run browser in headless mode
+  slow_mo: 100    # Milliseconds to slow down operations (helps with rate limiting)
