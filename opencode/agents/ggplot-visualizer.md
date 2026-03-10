@@ -22,6 +22,15 @@ What you should return:
 - caption draft
 - LaTeX inclusion notes when useful
 
+Handoff payload:
+- bead id
+- role: `ggplot-visualizer`
+- status
+- artifacts produced
+- claims safe to reuse
+- open risks
+- next recommended bead or subagent
+
 Special rules:
 - Do not interpret substantive results beyond what the figure can legitimately show.
 - If a figure is weak or redundant, say so and recommend a better one.

@@ -23,6 +23,8 @@
 - Hardened `academic-writer` so specialist subagent invocation is mandatory by default, with a narrow copyediting exception.
 - Added `bd` as the mandatory workflow tracker for substantive tasks.
 - Added repository instructions and a dedicated beads workflow document.
+- Installed `gt` on the machine and added a Gastown-inspired orchestration layer to the repo.
+- Added structured handoff contracts across the specialist subagent prompts.
 
 ## Next build stones
 

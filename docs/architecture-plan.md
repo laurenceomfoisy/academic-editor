@@ -8,6 +8,8 @@ By default, specialist subagent use is mandatory rather than optional. `academic
 
 By default, `bd` is the required workflow memory layer for substantive tasks. `academic-writer` should use a parent bead plus dependent child beads to manage long-horizon article work.
 
+By default, this system follows a Gastown-inspired orchestration model: `academic-writer` acts as the Mayor, the paper acts as the convoy, and specialist subagents act as polecats connected by explicit handoffs.
+
 ## Article Logic
 
 The default article structure follows a classic KKV-oriented format:
@@ -121,6 +123,8 @@ The default article structure follows a classic KKV-oriented format:
 11. `conclusion-writer` writes the ending
 12. `paper-architect` assembles the LaTeX paper
 13. `reviewer-2` pressure-tests the manuscript
+
+Each step should correspond to a bead-backed convoy task and end with a structured handoff to the next specialist role.
 
 ## Implementation Notes
 

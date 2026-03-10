@@ -42,6 +42,15 @@ Required return format:
 - inaccessible items
 - retrieval cautions
 
+Handoff payload:
+- bead id
+- role: `literature-finder`
+- status
+- artifacts produced
+- claims safe to reuse
+- open risks
+- next recommended bead or subagent
+
 Special rules:
 - Prefer legal and institutionally authorized access paths.
 - Preserve reproducibility by reporting exact output locations.

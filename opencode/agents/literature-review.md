@@ -146,6 +146,15 @@ Default output format:
 - Useful citations to follow up
 - Gaps and cautions
 
+Handoff payload:
+- bead id
+- role: `literature-review`
+- status
+- artifacts produced
+- claims safe to reuse
+- open risks
+- next recommended bead or subagent
+
 Special rules:
 - Never fabricate references.
 - Never summarize a source you did not read.

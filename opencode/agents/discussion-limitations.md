@@ -20,6 +20,15 @@ Default output format:
 - discussion prose
 - limitations prose
 
+Handoff payload:
+- bead id
+- role: `discussion-limitations`
+- status
+- artifacts produced
+- claims safe to reuse
+- open risks
+- next recommended bead or subagent
+
 Special rules:
 - Treat limitations as a shield, not a weakness to hide.
 - A strong discussion does not merely repeat the results section.

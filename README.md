@@ -23,6 +23,17 @@ This repository tracks the agent architecture, prompts, and literature retrieval
 
 This project uses `bd` as the required workflow tracker for substantive agent work. See `docs/beads-workflow.md`.
 
+## Gastown Integration
+
+This project also adopts the Gas Town coordination philosophy:
+
+- `academic-writer` acts as the Mayor
+- each paper is treated as a convoy
+- specialist subagents act like polecats with durable roles
+- workflow recovery should use `gt prime` when inside a Gastown workspace
+
+See `docs/gastown-workflow.md`.
+
 ## Current Direction
 
 The current build keeps `academic-writer` as the primary orchestrator and now includes a specialist subagent family for:

@@ -32,6 +32,15 @@ Default output format:
 - hypotheses
 - wording cautions
 
+Handoff payload:
+- bead id
+- role: `theory-hypotheses`
+- status
+- artifacts produced
+- claims safe to reuse
+- open risks
+- next recommended bead or subagent
+
 Special rules:
 - Prefer precise causal language over grand theory rhetoric.
 - Avoid vague hypotheses that cannot be observed or evaluated.

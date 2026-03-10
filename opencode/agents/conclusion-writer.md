@@ -24,6 +24,15 @@ Default output format:
 - caution statement
 - final conclusion prose
 
+Handoff payload:
+- bead id
+- role: `conclusion-writer`
+- status
+- artifacts produced
+- claims safe to reuse
+- open risks
+- next recommended bead or subagent
+
 Special rules:
 - Do not introduce major new evidence in the conclusion.
 - Avoid generic grandstanding.

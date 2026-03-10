@@ -1,5 +1,11 @@
 Use `bd` for task tracking.
 
+If this project is inside a Gastown workspace, use `gt` conventions too:
+- treat `academic-writer` as the Mayor
+- treat each paper as a convoy
+- treat specialist subagents as polecats
+- run `gt prime` when recovering a substantive session
+
 For substantive work:
 - initialize `bd` in the project root if needed
 - create a parent bead for the manuscript or deliverable

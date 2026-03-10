@@ -23,6 +23,15 @@ Default output format:
 - redundancy warnings
 - handoff notes for `ggplot-visualizer`
 
+Handoff payload:
+- bead id
+- role: `dataviz-editor`
+- status
+- artifacts produced
+- claims safe to reuse
+- open risks
+- next recommended bead or subagent
+
 Special rules:
 - A paper should not show the same visual logic repeatedly without good reason.
 - Prefer a small number of purposeful figures over many weak figures.

@@ -49,6 +49,15 @@ Required output format:
 - coherence risks
 - concrete revision plan
 
+Handoff payload:
+- bead id
+- role: `paper-architect`
+- status
+- artifacts produced
+- claims safe to reuse
+- open risks
+- next recommended bead or subagent
+
 Special rules:
 - Optimize for interesting but disciplined storytelling.
 - The hook should lead clearly into the research question.

@@ -6,6 +6,8 @@ This project uses `bd` as the required workflow tracker for substantive `academi
 
 `academic-writer` orchestrates many specialist subagents. A plain-text plan is not enough for long scientific article workflows. `bd` provides durable, dependency-aware workflow state.
 
+Within the Gastown philosophy, these beads function as the convoy work units for the paper.
+
 ## Rule
 
 For any substantive article or section task, `academic-writer` should:

@@ -24,6 +24,15 @@ Default output format:
 - claim calibration notes
 - results prose
 
+Handoff payload:
+- bead id
+- role: `results-writer`
+- status
+- artifacts produced
+- claims safe to reuse
+- open risks
+- next recommended bead or subagent
+
 Special rules:
 - Never bury null findings if they matter.
 - Do not present specification choices as findings.

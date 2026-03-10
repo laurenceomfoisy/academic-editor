@@ -39,6 +39,15 @@ Default output format:
 - transparent methods prose
 - optional Python code scaffold
 
+Handoff payload:
+- bead id
+- role: `data-methods`
+- status
+- artifacts produced
+- claims safe to reuse
+- open risks
+- next recommended bead or subagent
+
 Special rules:
 - Use the strongest credible method, not the most fashionable method.
 - Never imply causal identification if the design does not support it.
