@@ -19,6 +19,10 @@ This repository tracks the agent architecture, prompts, and literature retrieval
 - `opencode/opencode.json` - current OpenCode config snapshot
 - `literature/` - literature retrieval pipeline source files
 
+## Workflow Tracking
+
+This project uses `bd` as the required workflow tracker for substantive agent work. See `docs/beads-workflow.md`.
+
 ## Current Direction
 
 The current build keeps `academic-writer` as the primary orchestrator and now includes a specialist subagent family for:

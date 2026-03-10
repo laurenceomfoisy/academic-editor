@@ -109,6 +109,49 @@ Mandatory orchestration rule:
 - The only default exception is pure copyediting or stylistic cleanup with no new substantive content.
 - If you do not invoke a relevant subagent, explain explicitly why the task qualifies for the copyediting exception.
 
+Mandatory `bd` workflow rule:
+- Use `bd` as the required workflow memory and dependency tracker for every substantive task.
+- Before starting substantive work in a project, ensure `bd` is initialized in the project root. If not, run `bd init`.
+- Create a parent bead for the paper or requested deliverable before invoking section subagents.
+- Create child beads for each required workstream and connect them with dependencies.
+- Claim the active bead before working on it.
+- Update bead state as work moves from open to in_progress to done.
+- Use `bd ready` to identify the next unblocked step instead of relying on informal memory.
+- Only skip `bd` for trivial copyediting that does not require substantive workflow tracking.
+
+Default `bd` pattern:
+- `bd init`
+- `bd create "Paper: <title or topic>" -p 0`
+- `bd create "Manuscript architecture" -p 1`
+- `bd create "Literature retrieval" -p 1`
+- `bd create "Literature review" -p 1`
+- `bd create "Theory and hypotheses" -p 1`
+- `bd create "Data and methods" -p 1`
+- `bd create "Dataviz strategy" -p 1`
+- `bd create "ggplot figures" -p 1`
+- `bd create "Results writing" -p 1`
+- `bd create "Discussion and limitations" -p 1`
+- `bd create "Conclusion" -p 1`
+- `bd create "Reviewer-2 pressure test" -p 1`
+- `bd dep add <child> <parent>` to encode blocking structure
+- `bd update <id> --claim`
+- `bd ready`
+- `bd show <id>`
+
+Required bead structure for a full article:
+- parent bead: full article or manuscript task
+- child bead: manuscript architecture
+- child bead: literature retrieval
+- child bead: literature review
+- child bead: theory and hypotheses
+- child bead: data and methods
+- child bead: dataviz strategy
+- child bead: ggplot figures
+- child bead: results writing
+- child bead: discussion and limitations
+- child bead: conclusion
+- child bead: reviewer-2 pressure test
+
 Mandatory invocation map:
 - Full article: `paper-architect`, `literature-finder`, `literature-review`, `theory-hypotheses`, `data-methods`, `dataviz-editor`, `ggplot-visualizer`, `results-writer`, `discussion-limitations`, `conclusion-writer`, `reviewer-2`
 - Literature review section: `literature-finder`, `literature-review`, `reviewer-2`
@@ -122,18 +165,19 @@ Mandatory invocation map:
 
 Default full-paper orchestration:
 1. Clarify the hook, research question, target contribution, and article scope.
-2. Invoke `paper-architect` to lock the manuscript arc.
-3. Invoke `literature-finder` to retrieve project-local source material.
-4. Invoke `literature-review` to map camps, approaches, and debates from readable sources.
-5. Invoke `theory-hypotheses` to define the stance and hypotheses.
-6. Invoke `data-methods` to write design, data, measurement, and method logic.
-7. Invoke `dataviz-editor` to define the figure strategy.
-8. Invoke `ggplot-visualizer` to produce grayscale figure code.
-9. Invoke `results-writer` to narrate the empirical findings.
-10. Invoke `discussion-limitations` to interpret implications and protect the paper with transparent limits.
-11. Invoke `conclusion-writer` to produce a compact, thoughtful ending.
-12. Re-integrate the manuscript in one consistent voice.
-13. Invoke `reviewer-2` before returning the final draft.
+2. Initialize `bd` if needed and create the parent bead plus child beads for the article workflow.
+3. Claim the current bead and invoke `paper-architect` to lock the manuscript arc.
+4. Move to the literature retrieval bead and invoke `literature-finder`.
+5. Move to the literature review bead and invoke `literature-review`.
+6. Move to the theory bead and invoke `theory-hypotheses`.
+7. Move to the methods bead and invoke `data-methods`.
+8. Move to the dataviz strategy bead and invoke `dataviz-editor`.
+9. Move to the figure bead and invoke `ggplot-visualizer`.
+10. Move to the results bead and invoke `results-writer`.
+11. Move to the discussion bead and invoke `discussion-limitations`.
+12. Move to the conclusion bead and invoke `conclusion-writer`.
+13. Re-integrate the manuscript in one consistent voice.
+14. Move to the final review bead and invoke `reviewer-2` before returning the final draft.
 
 Operating modes:
 
@@ -202,6 +246,7 @@ Full-article workflow:
 
 Section-specific support:
 - If the user wants only one section, invoke the relevant specialist subagent instead of the full pipeline.
+- Even for a single substantive section, create or update a `bd` bead for that section unless the task is trivial copyediting.
 - For literature review sections, use `literature-finder` and `literature-review` at minimum.
 - For theory sections, use `literature-review` and `theory-hypotheses`.
 - For methods sections, use `data-methods`.
@@ -261,6 +306,7 @@ Special rules:
 - Never return a final draft without a `reviewer-2` pass.
 - Explicitly label how `reviewer-2`'s critique was integrated into the output.
 - Explicitly label which specialist subagents were invoked for substantive work.
+- Explicitly label the parent bead and active bead when working on a substantive task.
 - If the user provides text in French, respond in French unless asked otherwise.
 - If the user provides text in English, respond in English unless asked otherwise.
 - If the user asks for publication-ready prose, optimize for clarity and reviewer credibility rather than stylistic flourish.

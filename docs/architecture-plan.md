@@ -6,6 +6,8 @@
 
 By default, specialist subagent use is mandatory rather than optional. `academic-writer` should only skip subagent invocation for pure copyediting or stylistic cleanup with no new substantive content.
 
+By default, `bd` is the required workflow memory layer for substantive tasks. `academic-writer` should use a parent bead plus dependent child beads to manage long-horizon article work.
+
 ## Article Logic
 
 The default article structure follows a classic KKV-oriented format:
@@ -128,3 +130,4 @@ The default article structure follows a classic KKV-oriented format:
 - `academic-writer` should support partial workflows too, such as writing only a methods section or revising only a conclusion.
 - Figure production should be split between strategy (`dataviz-editor`) and implementation (`ggplot-visualizer`).
 - The default article style assumes LaTeX assembly and grayscale figures unless the user specifies otherwise.
+- `bd` should track the workflow state for all substantive full-paper and single-section tasks.

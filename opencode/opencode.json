@@ -6,7 +6,12 @@
       "description": "Drafts and revises political science writing with strict source-grounding and KKV-style inferential discipline.",
       "prompt": "./agents/academic-writer.md",
       "color": "info",
-      "steps": 6
+      "steps": 6,
+      "permission": {
+        "bash": "allow",
+        "read": "allow",
+        "question": "allow"
+      }
     },
     "reviewer-2": {
       "mode": "subagent",

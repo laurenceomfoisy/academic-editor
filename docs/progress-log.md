@@ -21,6 +21,8 @@
 - Added `conclusion-writer`.
 - Expanded `academic-writer` so it can orchestrate the full article workflow end to end.
 - Hardened `academic-writer` so specialist subagent invocation is mandatory by default, with a narrow copyediting exception.
+- Added `bd` as the mandatory workflow tracker for substantive tasks.
+- Added repository instructions and a dedicated beads workflow document.
 
 ## Next build stones
 
