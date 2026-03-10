@@ -84,6 +84,11 @@ The default article structure follows a classic KKV-oriented format:
   - emphasizes identification, assumptions, measurement, threats to inference, and robustness
   - can code in Python for analysis workflows
 
+- `data-analysis`
+  - actually executes the empirical analysis
+  - understands and wrangles raw data into tidy analysis-ready form
+  - estimates models, runs diagnostics, and produces reproducible findings
+
 ### Results and Visualization
 
 - `results-writer`
@@ -123,13 +128,14 @@ The default article structure follows a classic KKV-oriented format:
 5. `literature-review` maps the field
 6. `theory-hypotheses` builds stance and hypotheses
 7. `data-methods` writes design and code support
-8. `dataviz-editor` proposes the figure strategy
-9. `ggplot-visualizer` builds grayscale figures
-10. `results-writer` writes the empirical narrative
-11. `discussion-limitations` interprets and bounds claims
-12. `conclusion-writer` writes the ending
-13. `paper-architect` assembles the LaTeX paper
-14. `reviewer-2` pressure-tests the manuscript
+8. `data-analysis` executes the empirical analysis
+9. `dataviz-editor` proposes the figure strategy
+10. `ggplot-visualizer` builds grayscale figures
+11. `results-writer` writes the empirical narrative
+12. `discussion-limitations` interprets and bounds claims
+13. `conclusion-writer` writes the ending
+14. `paper-architect` assembles the LaTeX paper
+15. `reviewer-2` pressure-tests the manuscript
 
 Each step should correspond to a bead-backed convoy task and end with a structured handoff to the next specialist role.
 
@@ -139,6 +145,7 @@ Each step should correspond to a bead-backed convoy task and end with a structur
 - `academic-writer` should automatically trigger literature retrieval when new literature claims are needed, but only after planning and query approval.
 - `academic-planner` should remain pre-workflow and should not create beads itself.
 - `academic-writer` should create the bead structure after receiving an approved plan.
+- `data-methods` and `data-analysis` should remain distinct: one designs the empirical strategy, the other executes it.
 - `literature-finder` and `literature-review` should be separated conceptually even if they initially share tooling.
 - `academic-writer` should support partial workflows too, such as writing only a methods section or revising only a conclusion.
 - Figure production should be split between strategy (`dataviz-editor`) and implementation (`ggplot-visualizer`).

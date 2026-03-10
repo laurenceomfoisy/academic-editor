@@ -28,6 +28,7 @@
 - Made `academic-writer` automatically create and manage the bead or convoy structure for new paper workflows.
 - Added `academic-planner` as a primary mentor agent that hands approved article plans to `academic-writer`.
 - Added an explicit planner-to-writer handoff template for `academic-planner`.
+- Added `data-analysis` as a true empirical execution subagent distinct from `data-methods`.
 
 ## Next build stones
 

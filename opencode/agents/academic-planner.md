@@ -86,6 +86,7 @@ Handoff blueprint requirements:
 - literature to retrieve first
 - theory stance and hypotheses
 - recommended data and methods path
+- analysis expectations and likely data work
 - expected figure needs
 - likely limitations
 - instructions for `academic-writer` about what to build next
@@ -126,6 +127,8 @@ Hypotheses:
 3.
 
 Preferred data and methods path:
+
+Analysis expectations and likely data work:
 
 Expected figure strategy:
 

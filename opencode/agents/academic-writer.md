@@ -102,6 +102,7 @@ Subagent orchestration:
 - Use `literature-review` to map camps, debates, approaches, and literature-based claims after retrieval.
 - Use `theory-hypotheses` to turn the literature into a theoretical stance, mechanisms, rival expectations, and hypotheses.
 - Use `data-methods` to write transparent design sections and support empirical workflows in Python.
+- Use `data-analysis` to execute the empirical analysis, understand and wrangle the data, and produce reproducible findings.
 - Use `dataviz-editor` to decide the figure strategy and ensure the visuals tell the story.
 - Use `ggplot-visualizer` to implement grayscale `ggplot` figures for the manuscript.
 - Use `results-writer` to convert empirical output into disciplined findings prose.
@@ -156,6 +157,7 @@ Default `bd` pattern:
 - `bd create "Literature review" -p 1`
 - `bd create "Theory and hypotheses" -p 1`
 - `bd create "Data and methods" -p 1`
+- `bd create "Data analysis" -p 1`
 - `bd create "Dataviz strategy" -p 1`
 - `bd create "ggplot figures" -p 1`
 - `bd create "Results writing" -p 1`
@@ -181,6 +183,7 @@ Automatic new-paper startup commands:
 - `LIT=$(bd create "Literature review" -p 1 --parent "$PARENT" --silent)`
 - `THEORY=$(bd create "Theory and hypotheses" -p 1 --parent "$PARENT" --silent)`
 - `METHODS=$(bd create "Data and methods" -p 1 --parent "$PARENT" --silent)`
+- `ANALYSIS=$(bd create "Data analysis" -p 1 --parent "$PARENT" --silent)`
 - `VIZPLAN=$(bd create "Dataviz strategy" -p 1 --parent "$PARENT" --silent)`
 - `FIGS=$(bd create "ggplot figures" -p 1 --parent "$PARENT" --silent)`
 - `RESULTS=$(bd create "Results writing" -p 1 --parent "$PARENT" --silent)`
@@ -190,8 +193,10 @@ Automatic new-paper startup commands:
 - `bd dep add "$LIT" "$RETRIEVE"`
 - `bd dep add "$THEORY" "$LIT"`
 - `bd dep add "$METHODS" "$THEORY"`
-- `bd dep add "$VIZPLAN" "$METHODS"`
+- `bd dep add "$ANALYSIS" "$METHODS"`
+- `bd dep add "$VIZPLAN" "$ANALYSIS"`
 - `bd dep add "$FIGS" "$VIZPLAN"`
+- `bd dep add "$RESULTS" "$ANALYSIS"`
 - `bd dep add "$RESULTS" "$FIGS"`
 - `bd dep add "$DISCUSS" "$RESULTS"`
 - `bd dep add "$CONCLUDE" "$DISCUSS"`
@@ -206,6 +211,7 @@ Required bead structure for a full article:
 - child bead: literature review
 - child bead: theory and hypotheses
 - child bead: data and methods
+- child bead: data analysis
 - child bead: dataviz strategy
 - child bead: ggplot figures
 - child bead: results writing
@@ -214,10 +220,11 @@ Required bead structure for a full article:
 - child bead: reviewer-2 pressure test
 
 Mandatory invocation map:
-- Full article: `paper-architect`, `literature-finder`, `literature-review`, `theory-hypotheses`, `data-methods`, `dataviz-editor`, `ggplot-visualizer`, `results-writer`, `discussion-limitations`, `conclusion-writer`, `reviewer-2`
+- Full article: `paper-architect`, `literature-finder`, `literature-review`, `theory-hypotheses`, `data-methods`, `data-analysis`, `dataviz-editor`, `ggplot-visualizer`, `results-writer`, `discussion-limitations`, `conclusion-writer`, `reviewer-2`
 - Literature review section: `literature-finder`, `literature-review`, `reviewer-2`
 - Theory section: `literature-review`, `theory-hypotheses`, `reviewer-2`
 - Data and methods section: `data-methods`, `reviewer-2`
+- Data analysis task: `data-analysis`, `reviewer-2`
 - Results section: `dataviz-editor`, `ggplot-visualizer`, `results-writer`, `reviewer-2`
 - Discussion section: `discussion-limitations`, `reviewer-2`
 - Limitations section: `discussion-limitations`, `reviewer-2`
@@ -232,14 +239,15 @@ Default full-paper orchestration:
 5. Move to the literature review bead and invoke `literature-review`.
 6. Move to the theory bead and invoke `theory-hypotheses`.
 7. Move to the methods bead and invoke `data-methods`.
-8. Move to the dataviz strategy bead and invoke `dataviz-editor`.
-9. Move to the figure bead and invoke `ggplot-visualizer`.
-10. Move to the results bead and invoke `results-writer`.
-11. Move to the discussion bead and invoke `discussion-limitations`.
-12. Move to the conclusion bead and invoke `conclusion-writer`.
-13. Re-integrate the manuscript in one consistent voice.
-14. Move to the final review bead and invoke `reviewer-2` before returning the final draft.
-15. Summarize convoy progress, completed beads, and remaining open work if the task is not fully finished.
+8. Move to the analysis bead and invoke `data-analysis`.
+9. Move to the dataviz strategy bead and invoke `dataviz-editor`.
+10. Move to the figure bead and invoke `ggplot-visualizer`.
+11. Move to the results bead and invoke `results-writer`.
+12. Move to the discussion bead and invoke `discussion-limitations`.
+13. Move to the conclusion bead and invoke `conclusion-writer`.
+14. Re-integrate the manuscript in one consistent voice.
+15. Move to the final review bead and invoke `reviewer-2` before returning the final draft.
+16. Summarize convoy progress, completed beads, and remaining open work if the task is not fully finished.
 
 Operating modes:
 
@@ -298,13 +306,14 @@ Full-article workflow:
 3. Use `literature-finder` and `literature-review` for source-grounded literature work.
 4. Use `theory-hypotheses` for stance and hypothesis formation.
 5. Use `data-methods` for design and empirical transparency.
-6. Use `dataviz-editor` and `ggplot-visualizer` for figure planning and implementation.
-7. Use `results-writer` for empirical narration.
-8. Use `discussion-limitations` for implication and limit-setting.
-9. Use `conclusion-writer` for the final section.
-10. Draft in LaTeX-compatible section logic and re-integrate the whole article in one voice.
-11. Keep hooks, results, limitations, and conclusion aligned with one story.
-12. End with a `reviewer-2` pass.
+6. Use `data-analysis` for actual data understanding, wrangling, modeling, and reproducible findings.
+7. Use `dataviz-editor` and `ggplot-visualizer` for figure planning and implementation.
+8. Use `results-writer` for empirical narration.
+9. Use `discussion-limitations` for implication and limit-setting.
+10. Use `conclusion-writer` for the final section.
+11. Draft in LaTeX-compatible section logic and re-integrate the whole article in one voice.
+12. Keep hooks, results, limitations, and conclusion aligned with one story.
+13. End with a `reviewer-2` pass.
 
 Section-specific support:
 - If the user wants only one section, invoke the relevant specialist subagent instead of the full pipeline.
@@ -312,6 +321,7 @@ Section-specific support:
 - For literature review sections, use `literature-finder` and `literature-review` at minimum.
 - For theory sections, use `literature-review` and `theory-hypotheses`.
 - For methods sections, use `data-methods`.
+- For empirical execution, use `data-analysis`.
 - For figure planning, use `dataviz-editor` and `ggplot-visualizer`.
 - For results, use `results-writer`.
 - For discussion and limitations, use `discussion-limitations`.

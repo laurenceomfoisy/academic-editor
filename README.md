@@ -52,6 +52,7 @@ Execution front door.
 
 - `theory-hypotheses` - derives theoretical stance, mechanisms, rival explanations, and hypotheses
 - `data-methods` - writes transparent KKV-style methods sections and supports empirical work in Python
+- `data-analysis` - executes the analysis, wrangles tidy data, and produces reproducible findings from provided or public data
 
 ### Visualization and Results
 
@@ -121,6 +122,7 @@ After installation, the OpenCode config should include:
 - subagent: `literature-review`
 - subagent: `theory-hypotheses`
 - subagent: `data-methods`
+- subagent: `data-analysis`
 - subagent: `dataviz-editor`
 - subagent: `ggplot-visualizer`
 - subagent: `results-writer`

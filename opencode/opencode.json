@@ -80,6 +80,20 @@
       "color": "warning",
       "steps": 6
     },
+    "data-analysis": {
+      "mode": "subagent",
+      "description": "Executes empirical analysis, wrangles tidy data, and produces reproducible findings from provided or public datasets.",
+      "prompt": "./agents/data-analysis.md",
+      "color": "warning",
+      "steps": 6,
+      "permission": {
+        "bash": "allow",
+        "read": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "question": "allow"
+      }
+    },
     "ggplot-visualizer": {
       "mode": "subagent",
       "description": "Produces grayscale publication-ready ggplot figures, captions, and figure code guidance.",
