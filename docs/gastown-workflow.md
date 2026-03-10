@@ -19,6 +19,8 @@ When running a substantive article workflow:
 3. specialist subagents produce structured handoffs
 4. recovery comes from `gt prime` when available and `bd ready` plus bead inspection
 
+For a new paper, `academic-writer` should automatically create the convoy root and its standard child beads once the paper plan is agreed.
+
 ## If You Are In a Gastown Workspace
 
 Recommended recovery steps:
@@ -42,6 +44,8 @@ Use the same philosophy through `bd` alone:
 - one parent bead per paper
 - child beads for architecture, literature, theory, methods, figures, results, discussion, conclusion, review
 - explicit handoff payloads between stages
+
+This means the user can simply switch to `academic-writer` and start the paper workflow. The agent should create and manage the convoy structure automatically.
 
 ## Required Handoff Contract
 

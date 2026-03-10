@@ -22,6 +22,8 @@ For any substantive article or section task, `academic-writer` should:
 
 Only trivial copyediting can skip this workflow.
 
+For a new paper, `academic-writer` should create the bead structure automatically once the paper topic and scope are clear.
+
 ## Full Article Bead Template
 
 Recommended child beads:
@@ -45,6 +47,42 @@ Initialize in the project root:
 ```bash
 bd init
 ```
+
+## Automatic New-Paper Startup
+
+When a user starts a new paper with `academic-writer`, the agent should create the full bead structure automatically.
+
+Suggested script pattern:
+
+```bash
+PARENT=$(bd create "Paper: <title or topic>" -p 0 --type epic --silent)
+ARCH=$(bd create "Manuscript architecture" -p 1 --parent "$PARENT" --silent)
+RETRIEVE=$(bd create "Literature retrieval" -p 1 --parent "$PARENT" --silent)
+LIT=$(bd create "Literature review" -p 1 --parent "$PARENT" --silent)
+THEORY=$(bd create "Theory and hypotheses" -p 1 --parent "$PARENT" --silent)
+METHODS=$(bd create "Data and methods" -p 1 --parent "$PARENT" --silent)
+VIZPLAN=$(bd create "Dataviz strategy" -p 1 --parent "$PARENT" --silent)
+FIGS=$(bd create "ggplot figures" -p 1 --parent "$PARENT" --silent)
+RESULTS=$(bd create "Results writing" -p 1 --parent "$PARENT" --silent)
+DISCUSS=$(bd create "Discussion and limitations" -p 1 --parent "$PARENT" --silent)
+CONCLUDE=$(bd create "Conclusion" -p 1 --parent "$PARENT" --silent)
+REVIEW=$(bd create "Reviewer-2 pressure test" -p 1 --parent "$PARENT" --silent)
+
+bd dep add "$LIT" "$RETRIEVE"
+bd dep add "$THEORY" "$LIT"
+bd dep add "$METHODS" "$THEORY"
+bd dep add "$VIZPLAN" "$METHODS"
+bd dep add "$FIGS" "$VIZPLAN"
+bd dep add "$RESULTS" "$FIGS"
+bd dep add "$DISCUSS" "$RESULTS"
+bd dep add "$CONCLUDE" "$DISCUSS"
+bd dep add "$REVIEW" "$CONCLUDE"
+
+bd update "$ARCH" --claim
+bd ready
+```
+
+The first active bead should usually be `Manuscript architecture`.
 
 Create the parent bead:
 

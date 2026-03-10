@@ -25,6 +25,7 @@
 - Added repository instructions and a dedicated beads workflow document.
 - Installed `gt` on the machine and added a Gastown-inspired orchestration layer to the repo.
 - Added structured handoff contracts across the specialist subagent prompts.
+- Made `academic-writer` automatically create and manage the bead or convoy structure for new paper workflows.
 
 ## Next build stones
 

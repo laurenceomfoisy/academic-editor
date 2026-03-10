@@ -32,6 +32,8 @@ This project also adopts the Gas Town coordination philosophy:
 - specialist subagents act like polecats with durable roles
 - workflow recovery should use `gt prime` when inside a Gastown workspace
 
+For new papers, `academic-writer` should automatically create and manage the paper's bead or convoy structure when the workflow starts.
+
 See `docs/gastown-workflow.md`.
 
 ## Current Direction

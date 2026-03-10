@@ -119,8 +119,8 @@ Mandatory orchestration rule:
 Mandatory `bd` workflow rule:
 - Use `bd` as the required workflow memory and dependency tracker for every substantive task.
 - Before starting substantive work in a project, ensure `bd` is initialized in the project root. If not, run `bd init`.
-- Create a parent bead for the paper or requested deliverable before invoking section subagents.
-- Create child beads for each required workstream and connect them with dependencies.
+- For a new paper workflow, automatically create a parent bead for the paper before invoking section subagents.
+- Automatically create child beads for each required workstream and connect them with dependencies.
 - Claim the active bead before working on it.
 - Update bead state as work moves from open to in_progress to done.
 - Use `bd ready` to identify the next unblocked step instead of relying on informal memory.
@@ -167,6 +167,38 @@ Default `bd` pattern:
 - `bd ready`
 - `bd show <id>`
 
+Automatic new-paper startup rule:
+- When the user switches to `academic-writer` to begin a new paper, you should treat that as the workflow start.
+- Do not wait for the user to ask for bead creation explicitly.
+- After clarifying the paper topic and scope, automatically create the paper's parent bead and the standard child beads.
+- Then claim the first ready bead and begin orchestration from that structure.
+
+Automatic new-paper startup commands:
+- `bd init` if needed
+- `PARENT=$(bd create "Paper: <title or topic>" -p 0 --type epic --silent)`
+- `ARCH=$(bd create "Manuscript architecture" -p 1 --parent "$PARENT" --silent)`
+- `RETRIEVE=$(bd create "Literature retrieval" -p 1 --parent "$PARENT" --silent)`
+- `LIT=$(bd create "Literature review" -p 1 --parent "$PARENT" --silent)`
+- `THEORY=$(bd create "Theory and hypotheses" -p 1 --parent "$PARENT" --silent)`
+- `METHODS=$(bd create "Data and methods" -p 1 --parent "$PARENT" --silent)`
+- `VIZPLAN=$(bd create "Dataviz strategy" -p 1 --parent "$PARENT" --silent)`
+- `FIGS=$(bd create "ggplot figures" -p 1 --parent "$PARENT" --silent)`
+- `RESULTS=$(bd create "Results writing" -p 1 --parent "$PARENT" --silent)`
+- `DISCUSS=$(bd create "Discussion and limitations" -p 1 --parent "$PARENT" --silent)`
+- `CONCLUDE=$(bd create "Conclusion" -p 1 --parent "$PARENT" --silent)`
+- `REVIEW=$(bd create "Reviewer-2 pressure test" -p 1 --parent "$PARENT" --silent)`
+- `bd dep add "$LIT" "$RETRIEVE"`
+- `bd dep add "$THEORY" "$LIT"`
+- `bd dep add "$METHODS" "$THEORY"`
+- `bd dep add "$VIZPLAN" "$METHODS"`
+- `bd dep add "$FIGS" "$VIZPLAN"`
+- `bd dep add "$RESULTS" "$FIGS"`
+- `bd dep add "$DISCUSS" "$RESULTS"`
+- `bd dep add "$CONCLUDE" "$DISCUSS"`
+- `bd dep add "$REVIEW" "$CONCLUDE"`
+- `bd update "$ARCH" --claim`
+- `bd ready`
+
 Required bead structure for a full article:
 - parent bead: full article or manuscript task
 - child bead: manuscript architecture
@@ -194,7 +226,7 @@ Mandatory invocation map:
 
 Default full-paper orchestration:
 1. Clarify the hook, research question, target contribution, and article scope.
-2. Initialize `bd` if needed and create the parent bead plus child beads for the article workflow.
+2. Initialize `bd` if needed and automatically create the parent bead plus child beads for the article workflow.
 3. Claim the current bead and invoke `paper-architect` to lock the manuscript arc.
 4. Move to the literature retrieval bead and invoke `literature-finder`.
 5. Move to the literature review bead and invoke `literature-review`.
