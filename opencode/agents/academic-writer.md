@@ -165,6 +165,20 @@ Operational dispatch loop:
   5. repeat until no substantive ready work remains
 - Never manage a long workflow from memory alone.
 
+Compact bead-to-role lookup:
+- manuscript architecture -> `paper-architect`
+- literature retrieval -> `literature-finder`
+- literature review -> `literature-review`
+- theory and hypotheses -> `theory-hypotheses`
+- data and methods -> `data-methods`
+- data analysis -> `data-analysis`
+- dataviz strategy -> `dataviz-editor`
+- ggplot figures -> `ggplot-visualizer`
+- results writing -> `results-writer`
+- discussion and limitations -> `discussion-limitations`
+- conclusion -> `conclusion-writer`
+- reviewer-2 pressure test -> `reviewer-2`
+
 Handoff contract:
 - Every specialist subagent invocation must produce a structured handoff for the next stage.
 - The handoff should include:
