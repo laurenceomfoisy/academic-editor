@@ -179,6 +179,14 @@ Compact bead-to-role lookup:
 - conclusion -> `conclusion-writer`
 - reviewer-2 pressure test -> `reviewer-2`
 
+Compact bead state transitions:
+- new ready bead -> `bd update <id> --claim`
+- active delegated work -> keep bead claimed and wait for handoff
+- successful specialist completion -> update bead state or close bead as appropriate
+- blocked specialist completion -> leave bead open, record blocker, and move to another ready bead
+- downstream work unlocked -> use `bd ready` again before choosing next step
+- finished article workflow -> ensure final review bead is completed before treating the manuscript as done
+
 Handoff contract:
 - Every specialist subagent invocation must produce a structured handoff for the next stage.
 - The handoff should include:
