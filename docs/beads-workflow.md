@@ -2,6 +2,11 @@
 
 This project uses `bd` as the required workflow tracker for substantive `academic-writer` tasks.
 
+Preferred OpenCode integration style:
+- keep repo-level instructions lean
+- use `bd setup opencode` in the target project
+- rely on `bd prime` for current workflow context
+
 ## Why
 
 `academic-writer` orchestrates many specialist subagents. A plain-text plan is not enough for long scientific article workflows. `bd` provides durable, dependency-aware workflow state.
@@ -19,6 +24,14 @@ For any substantive article or section task, `academic-writer` should:
 5. claim the active bead before work
 6. update bead state as work progresses
 7. use `bd ready` to pick the next unblocked step
+
+Recommended startup in an OpenCode project:
+
+```bash
+bd init
+bd setup opencode
+bd prime
+```
 
 Only trivial copyediting can skip this workflow.
 

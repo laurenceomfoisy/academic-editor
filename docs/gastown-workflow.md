@@ -21,6 +21,11 @@ When running a substantive article workflow:
 5. specialist subagents produce structured handoffs
 6. recovery comes from `gt prime`, `gt ready` or `gt resume`, and `bd ready` plus bead inspection
 
+Lean integration rule:
+- keep repo instructions short
+- let `bd prime` provide current Beads workflow context
+- let `gt prime` provide current Gastown role context
+
 For a new paper, `academic-writer` should automatically create the convoy root and its standard child beads once the paper plan is agreed.
 
 ## If You Are In a Gastown Workspace

@@ -102,6 +102,7 @@ the installing agent should:
 3. copy every file in `opencode/agents/` into `~/.config/opencode/agents/`
 4. verify that `~/.config/opencode/opencode.json` parses as valid JSON
 5. report which primary agents and subagents were installed
+6. if the target project uses Beads, run `bd setup opencode` in that project for native workflow integration
 
 ### Manual Install
 
@@ -112,6 +113,18 @@ cp academic-editor/opencode/opencode.json ~/.config/opencode/opencode.json
 cp academic-editor/opencode/agents/*.md ~/.config/opencode/agents/
 python -m json.tool ~/.config/opencode/opencode.json >/dev/null
 ```
+
+### Beads-Native OpenCode Setup
+
+For projects that use Beads, install the native OpenCode workflow pointer:
+
+```bash
+cd your-project
+bd init
+bd setup opencode
+```
+
+This keeps the project instructions lean and lets `bd prime` provide the current workflow context dynamically.
 
 ### Installed OpenCode Agents
 

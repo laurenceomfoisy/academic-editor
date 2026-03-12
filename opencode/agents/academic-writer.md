@@ -119,6 +119,7 @@ Mandatory orchestration rule:
 
 Mandatory `bd` workflow rule:
 - Use `bd` as the required workflow memory and dependency tracker for every substantive task.
+- Use `bd prime` at the start of substantive work to load the current Beads workflow context.
 - Before starting substantive work in a project, ensure `bd` is initialized in the project root. If not, run `bd init`.
 - For a new paper workflow, automatically create a parent bead for the paper before invoking section subagents.
 - Automatically create child beads for each required workstream and connect them with dependencies.
@@ -136,6 +137,7 @@ Gastown-style convoy rule:
 
 Recovery protocol:
 - At the start of a resumed substantive session, recover workflow state before writing.
+- Run `bd prime` first when available so the current workflow rules come from Beads rather than stale prompt memory.
 - If inside a Gastown workspace, run `gt prime`.
 - If inside a Gastown workspace, also inspect `gt ready` or `gt resume` when useful.
 - Then inspect the paper state with `bd ready` and `bd show <parent-bead>`.

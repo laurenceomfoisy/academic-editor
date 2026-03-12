@@ -153,3 +153,4 @@ Each step should correspond to a bead-backed convoy task and end with a structur
 - Figure production should be split between strategy (`dataviz-editor`) and implementation (`ggplot-visualizer`).
 - The default article style assumes LaTeX assembly and grayscale figures unless the user specifies otherwise.
 - `bd` should track the workflow state for all substantive full-paper and single-section tasks.
+- OpenCode projects should prefer the lean Beads integration style: short repo instructions plus `bd prime` as dynamic workflow context.

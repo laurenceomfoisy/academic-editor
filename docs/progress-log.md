@@ -30,6 +30,7 @@
 - Added an explicit planner-to-writer handoff template for `academic-planner`.
 - Added `data-analysis` as a true empirical execution subagent distinct from `data-methods`.
 - Improved the `academic-planner` -> `academic-writer` handoff so it now uses an explicit ready-to-transfer cue.
+- Refactored the workflow toward a leaner Beads-native OpenCode style centered on `bd prime` and lighter repo instructions.
 
 ## Next build stones
 
