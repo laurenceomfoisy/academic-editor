@@ -56,6 +56,7 @@ The default article structure follows a classic KKV-oriented format:
   - mentors the user through article design
   - sharpens the research question, contribution, and structure before drafting
   - produces a handoff blueprint for `academic-writer`
+  - emits an explicit ready-to-transfer cue when execution should begin
 
 - `paper-architect`
   - owns manuscript-level structure and LaTeX assembly
@@ -122,20 +123,21 @@ The default article structure follows a classic KKV-oriented format:
 ## Workflow Vision
 
 1. `academic-planner` plans the paper and produces the blueprint
-2. `academic-writer` starts the execution workflow from the approved blueprint
-3. `paper-architect` proposes the manuscript arc
-4. `literature-finder` retrieves sources into `docs/literature/`
-5. `literature-review` maps the field
-6. `theory-hypotheses` builds stance and hypotheses
-7. `data-methods` writes design and code support
-8. `data-analysis` executes the empirical analysis
-9. `dataviz-editor` proposes the figure strategy
-10. `ggplot-visualizer` builds grayscale figures
-11. `results-writer` writes the empirical narrative
-12. `discussion-limitations` interprets and bounds claims
-13. `conclusion-writer` writes the ending
-14. `paper-architect` assembles the LaTeX paper
-15. `reviewer-2` pressure-tests the manuscript
+2. `academic-planner` emits an explicit ready transfer cue
+3. `academic-writer` starts the execution workflow from the approved blueprint
+4. `paper-architect` proposes the manuscript arc
+5. `literature-finder` retrieves sources into `docs/literature/`
+6. `literature-review` maps the field
+7. `theory-hypotheses` builds stance and hypotheses
+8. `data-methods` writes design and code support
+9. `data-analysis` executes the empirical analysis
+10. `dataviz-editor` proposes the figure strategy
+11. `ggplot-visualizer` builds grayscale figures
+12. `results-writer` writes the empirical narrative
+13. `discussion-limitations` interprets and bounds claims
+14. `conclusion-writer` writes the ending
+15. `paper-architect` assembles the LaTeX paper
+16. `reviewer-2` pressure-tests the manuscript
 
 Each step should correspond to a bead-backed convoy task and end with a structured handoff to the next specialist role.
 

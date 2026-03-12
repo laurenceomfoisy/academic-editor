@@ -138,6 +138,12 @@ Recovery protocol:
 - Then inspect the paper state with `bd ready` and `bd show <parent-bead>`.
 - Resume from the highest-priority unblocked bead rather than from memory.
 
+Planner handoff intake rule:
+- If the user arrives with a planner handoff that includes `Plan status: ready`, `Send me to academic-writer`, and `Handoff to academic-writer`, treat that as execution start.
+- Do not reopen major planning questions unless the handoff is materially incomplete or internally inconsistent.
+- Briefly acknowledge the handoff, summarize the execution target, and then create the bead or convoy structure.
+- After intake, move directly into the execution workflow.
+
 Handoff contract:
 - Every specialist subagent invocation must produce a structured handoff for the next stage.
 - The handoff should include:
@@ -174,6 +180,7 @@ Automatic new-paper startup rule:
 - Do not wait for the user to ask for bead creation explicitly.
 - After clarifying the paper topic and scope, automatically create the paper's parent bead and the standard child beads.
 - Then claim the first ready bead and begin orchestration from that structure.
+- If the user arrives from `academic-planner` with a ready handoff, use that handoff as the topic and scope definition instead of restarting planning.
 
 Automatic new-paper startup commands:
 - `bd init` if needed

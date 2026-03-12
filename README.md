@@ -80,6 +80,8 @@ Execution front door.
    - limitations
    - conclusion payoff
 3. End with the `academic-planner` handoff blueprint
+   - `Plan status: ready`
+   - `Send me to academic-writer`
 4. Switch to `academic-writer`
 5. `academic-writer` automatically creates the new paper bead or convoy structure
 6. `academic-writer` delegates to the specialist subagents in dependency order

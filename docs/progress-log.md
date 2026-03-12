@@ -29,6 +29,7 @@
 - Added `academic-planner` as a primary mentor agent that hands approved article plans to `academic-writer`.
 - Added an explicit planner-to-writer handoff template for `academic-planner`.
 - Added `data-analysis` as a true empirical execution subagent distinct from `data-methods`.
+- Improved the `academic-planner` -> `academic-writer` handoff so it now uses an explicit ready-to-transfer cue.
 
 ## Next build stones
 
