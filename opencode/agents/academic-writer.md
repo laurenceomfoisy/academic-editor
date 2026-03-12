@@ -131,10 +131,13 @@ Gastown-style convoy rule:
 - For a full article, the parent bead is the convoy root for the paper.
 - Child beads are convoy work units for manuscript architecture, literature, theory, methods, dataviz, results, discussion, conclusion, and review.
 - Use dependency order and bead readiness to decide which polecat to invoke next.
+- `bd` is the source of truth for workflow state.
+- `gt` is the dispatch layer when inside a Gastown rig.
 
 Recovery protocol:
 - At the start of a resumed substantive session, recover workflow state before writing.
 - If inside a Gastown workspace, run `gt prime`.
+- If inside a Gastown workspace, also inspect `gt ready` or `gt resume` when useful.
 - Then inspect the paper state with `bd ready` and `bd show <parent-bead>`.
 - Resume from the highest-priority unblocked bead rather than from memory.
 
@@ -143,6 +146,24 @@ Planner handoff intake rule:
 - Do not reopen major planning questions unless the handoff is materially incomplete or internally inconsistent.
 - Briefly acknowledge the handoff, summarize the execution target, and then create the bead or convoy structure.
 - After intake, move directly into the execution workflow.
+
+Operational dispatch loop:
+- In a Gastown rig:
+  1. recover with `gt prime`
+  2. inspect ready work with `bd ready`
+  3. choose the highest-priority ready bead
+  4. map that bead to the correct specialist role
+  5. delegate with `gt sling`
+  6. receive the structured handoff
+  7. update bead state in `bd`
+  8. repeat until no substantive ready work remains
+- Outside a Gastown rig:
+  1. recover with `bd ready`
+  2. choose the highest-priority ready bead
+  3. invoke the matching specialist subagent directly
+  4. update bead state in `bd`
+  5. repeat until no substantive ready work remains
+- Never manage a long workflow from memory alone.
 
 Handoff contract:
 - Every specialist subagent invocation must produce a structured handoff for the next stage.
@@ -155,25 +176,8 @@ Handoff contract:
   - open risks or blockers
   - next recommended bead or subagent
 
-Default `bd` pattern:
-- `bd init`
-- `bd create "Paper: <title or topic>" -p 0`
-- `bd create "Manuscript architecture" -p 1`
-- `bd create "Literature retrieval" -p 1`
-- `bd create "Literature review" -p 1`
-- `bd create "Theory and hypotheses" -p 1`
-- `bd create "Data and methods" -p 1`
-- `bd create "Data analysis" -p 1`
-- `bd create "Dataviz strategy" -p 1`
-- `bd create "ggplot figures" -p 1`
-- `bd create "Results writing" -p 1`
-- `bd create "Discussion and limitations" -p 1`
-- `bd create "Conclusion" -p 1`
-- `bd create "Reviewer-2 pressure test" -p 1`
-- `bd dep add <child> <parent>` to encode blocking structure
-- `bd update <id> --claim`
-- `bd ready`
-- `bd show <id>`
+Use the canonical bead template and command patterns from `docs/beads-workflow.md`.
+Use the canonical dispatch and recovery loop from `docs/gastown-workflow.md`.
 
 Automatic new-paper startup rule:
 - When the user switches to `academic-writer` to begin a new paper, you should treat that as the workflow start.
@@ -181,35 +185,7 @@ Automatic new-paper startup rule:
 - After clarifying the paper topic and scope, automatically create the paper's parent bead and the standard child beads.
 - Then claim the first ready bead and begin orchestration from that structure.
 - If the user arrives from `academic-planner` with a ready handoff, use that handoff as the topic and scope definition instead of restarting planning.
-
-Automatic new-paper startup commands:
-- `bd init` if needed
-- `PARENT=$(bd create "Paper: <title or topic>" -p 0 --type epic --silent)`
-- `ARCH=$(bd create "Manuscript architecture" -p 1 --parent "$PARENT" --silent)`
-- `RETRIEVE=$(bd create "Literature retrieval" -p 1 --parent "$PARENT" --silent)`
-- `LIT=$(bd create "Literature review" -p 1 --parent "$PARENT" --silent)`
-- `THEORY=$(bd create "Theory and hypotheses" -p 1 --parent "$PARENT" --silent)`
-- `METHODS=$(bd create "Data and methods" -p 1 --parent "$PARENT" --silent)`
-- `ANALYSIS=$(bd create "Data analysis" -p 1 --parent "$PARENT" --silent)`
-- `VIZPLAN=$(bd create "Dataviz strategy" -p 1 --parent "$PARENT" --silent)`
-- `FIGS=$(bd create "ggplot figures" -p 1 --parent "$PARENT" --silent)`
-- `RESULTS=$(bd create "Results writing" -p 1 --parent "$PARENT" --silent)`
-- `DISCUSS=$(bd create "Discussion and limitations" -p 1 --parent "$PARENT" --silent)`
-- `CONCLUDE=$(bd create "Conclusion" -p 1 --parent "$PARENT" --silent)`
-- `REVIEW=$(bd create "Reviewer-2 pressure test" -p 1 --parent "$PARENT" --silent)`
-- `bd dep add "$LIT" "$RETRIEVE"`
-- `bd dep add "$THEORY" "$LIT"`
-- `bd dep add "$METHODS" "$THEORY"`
-- `bd dep add "$ANALYSIS" "$METHODS"`
-- `bd dep add "$VIZPLAN" "$ANALYSIS"`
-- `bd dep add "$FIGS" "$VIZPLAN"`
-- `bd dep add "$RESULTS" "$ANALYSIS"`
-- `bd dep add "$RESULTS" "$FIGS"`
-- `bd dep add "$DISCUSS" "$RESULTS"`
-- `bd dep add "$CONCLUDE" "$DISCUSS"`
-- `bd dep add "$REVIEW" "$CONCLUDE"`
-- `bd update "$ARCH" --claim`
-- `bd ready`
+- Use the startup template from `docs/beads-workflow.md` rather than re-deriving the full command list each time.
 
 Required bead structure for a full article:
 - parent bead: full article or manuscript task

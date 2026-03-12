@@ -33,6 +33,7 @@ Recommended child beads:
 - literature review
 - theory and hypotheses
 - data and methods
+- data analysis
 - dataviz strategy
 - ggplot figures
 - results writing
@@ -61,6 +62,7 @@ RETRIEVE=$(bd create "Literature retrieval" -p 1 --parent "$PARENT" --silent)
 LIT=$(bd create "Literature review" -p 1 --parent "$PARENT" --silent)
 THEORY=$(bd create "Theory and hypotheses" -p 1 --parent "$PARENT" --silent)
 METHODS=$(bd create "Data and methods" -p 1 --parent "$PARENT" --silent)
+ANALYSIS=$(bd create "Data analysis" -p 1 --parent "$PARENT" --silent)
 VIZPLAN=$(bd create "Dataviz strategy" -p 1 --parent "$PARENT" --silent)
 FIGS=$(bd create "ggplot figures" -p 1 --parent "$PARENT" --silent)
 RESULTS=$(bd create "Results writing" -p 1 --parent "$PARENT" --silent)
@@ -71,8 +73,10 @@ REVIEW=$(bd create "Reviewer-2 pressure test" -p 1 --parent "$PARENT" --silent)
 bd dep add "$LIT" "$RETRIEVE"
 bd dep add "$THEORY" "$LIT"
 bd dep add "$METHODS" "$THEORY"
-bd dep add "$VIZPLAN" "$METHODS"
+bd dep add "$ANALYSIS" "$METHODS"
+bd dep add "$VIZPLAN" "$ANALYSIS"
 bd dep add "$FIGS" "$VIZPLAN"
+bd dep add "$RESULTS" "$ANALYSIS"
 bd dep add "$RESULTS" "$FIGS"
 bd dep add "$DISCUSS" "$RESULTS"
 bd dep add "$CONCLUDE" "$DISCUSS"
@@ -98,6 +102,7 @@ bd create "Literature retrieval" -p 1
 bd create "Literature review" -p 1
 bd create "Theory and hypotheses" -p 1
 bd create "Data and methods" -p 1
+bd create "Data analysis" -p 1
 bd create "Dataviz strategy" -p 1
 bd create "ggplot figures" -p 1
 bd create "Results writing" -p 1
@@ -112,8 +117,10 @@ Wire dependencies:
 bd dep add <literature-review> <literature-retrieval>
 bd dep add <theory-hypotheses> <literature-review>
 bd dep add <data-methods> <theory-hypotheses>
-bd dep add <dataviz-strategy> <data-methods>
+bd dep add <data-analysis> <data-methods>
+bd dep add <dataviz-strategy> <data-analysis>
 bd dep add <ggplot-figures> <dataviz-strategy>
+bd dep add <results-writing> <data-analysis>
 bd dep add <results-writing> <ggplot-figures>
 bd dep add <discussion-limitations> <results-writing>
 bd dep add <conclusion> <discussion-limitations>
@@ -135,6 +142,7 @@ bd ready
 - literature review -> `literature-review`
 - theory and hypotheses -> `theory-hypotheses`
 - data and methods -> `data-methods`
+- data analysis -> `data-analysis`
 - dataviz strategy -> `dataviz-editor`
 - ggplot figures -> `ggplot-visualizer`
 - results writing -> `results-writer`
