@@ -37,6 +37,8 @@ Only trivial copyediting can skip this workflow.
 
 For a new paper, `academic-writer` should create the bead structure automatically once the paper topic and scope are clear.
 
+In Gastown mode, the bead structure should also be attached to a paper convoy.
+
 ## Full Article Bead Template
 
 Recommended child beads:

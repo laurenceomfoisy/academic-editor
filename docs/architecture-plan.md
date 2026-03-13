@@ -51,6 +51,8 @@ The default article structure follows a classic KKV-oriented format:
   - enforces the article arc and KKV discipline
   - invokes specialist subagents when needed
   - integrates all sections into one paper voice
+  - creates and manages a paper convoy in Gastown mode
+  - delegates specialist work through `gt sling` in Gastown mode
 
 - `academic-planner`
   - mentors the user through article design
@@ -154,3 +156,4 @@ Each step should correspond to a bead-backed convoy task and end with a structur
 - The default article style assumes LaTeX assembly and grayscale figures unless the user specifies otherwise.
 - `bd` should track the workflow state for all substantive full-paper and single-section tasks.
 - OpenCode projects should prefer the lean Beads integration style: short repo instructions plus `bd prime` as dynamic workflow context.
+- In Gastown mode, `gt convoy`, `gt sling`, `gt handoff`, and `gt resume` should be part of the actual execution workflow, not just conceptual guidance.

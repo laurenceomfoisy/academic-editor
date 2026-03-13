@@ -129,17 +129,23 @@ Mandatory `bd` workflow rule:
 - Only skip `bd` for trivial copyediting that does not require substantive workflow tracking.
 
 Gastown-style convoy rule:
-- For a full article, the parent bead is the convoy root for the paper.
-- Child beads are convoy work units for manuscript architecture, literature, theory, methods, dataviz, results, discussion, conclusion, and review.
+- In Gastown mode, each paper should have an explicit paper convoy.
+- The paper convoy tracks the article's beads across the specialist roles.
+- The parent bead remains the source bead structure for the article.
 - Use dependency order and bead readiness to decide which polecat to invoke next.
 - `bd` is the source of truth for workflow state.
 - `gt` is the dispatch layer when inside a Gastown rig.
+
+Rig initialization rule:
+- If the current project is not already a Gastown rig and substantive multi-agent execution is needed, initialize it with `gt init` before dispatching work.
+- After `gt init`, treat the project as a local rig and continue with convoy-backed execution.
 
 Recovery protocol:
 - At the start of a resumed substantive session, recover workflow state before writing.
 - Run `bd prime` first when available so the current workflow rules come from Beads rather than stale prompt memory.
 - If inside a Gastown workspace, run `gt prime`.
-- If inside a Gastown workspace, also inspect `gt ready` or `gt resume` when useful.
+- If inside a Gastown workspace, use `gt resume` to recover handoff messages and pending delegated work.
+- If inside a Gastown workspace, also inspect `gt ready` when useful.
 - Then inspect the paper state with `bd ready` and `bd show <parent-bead>`.
 - Resume from the highest-priority unblocked bead rather than from memory.
 
@@ -155,10 +161,14 @@ Operational dispatch loop:
   2. inspect ready work with `bd ready`
   3. choose the highest-priority ready bead
   4. map that bead to the correct specialist role
-  5. delegate with `gt sling`
-  6. receive the structured handoff
-  7. update bead state in `bd`
-  8. repeat until no substantive ready work remains
+  5. ensure the paper convoy exists or create it
+  6. delegate with `gt sling` as the primary assignment mechanism
+  7. use `gt handoff` when a fresh session is needed and `gt resume` when returning to delegated work
+  8. receive the structured handoff
+  9. update bead state in `bd`
+  10. repeat until no substantive ready work remains
+- `gt sling` is the default delegation mechanism in Gastown mode.
+- `gt handoff` and `gt resume` are part of the real workflow, not optional notes.
 - Outside a Gastown rig:
   1. recover with `bd ready`
   2. choose the highest-priority ready bead
@@ -207,9 +217,15 @@ Automatic new-paper startup rule:
 - When the user switches to `academic-writer` to begin a new paper, you should treat that as the workflow start.
 - Do not wait for the user to ask for bead creation explicitly.
 - After clarifying the paper topic and scope, automatically create the paper's parent bead and the standard child beads.
+- In Gastown mode, also create or refresh the paper convoy.
 - Then claim the first ready bead and begin orchestration from that structure.
 - If the user arrives from `academic-planner` with a ready handoff, use that handoff as the topic and scope definition instead of restarting planning.
 - Use the startup template from `docs/beads-workflow.md` rather than re-deriving the full command list each time.
+
+Convoy and formula rule:
+- Prefer a paper convoy for all full-article workflows in Gastown mode.
+- Prefer `gt formula run kkv-article` when the standard KKV article workflow fits the task.
+- If the formula is not used, still create the paper convoy and dispatch specialist work with `gt sling`.
 
 Required bead structure for a full article:
 - parent bead: full article or manuscript task

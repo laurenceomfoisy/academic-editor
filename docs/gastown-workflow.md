@@ -26,6 +26,12 @@ Lean integration rule:
 - let `bd prime` provide current Beads workflow context
 - let `gt prime` provide current Gastown role context
 
+If the project is not already a Gastown rig and multi-agent execution is needed, initialize it first:
+
+```bash
+gt init
+```
+
 For a new paper, `academic-writer` should automatically create the convoy root and its standard child beads once the paper plan is agreed.
 
 ## If You Are In a Gastown Workspace
@@ -51,12 +57,34 @@ Inside a Gastown rig, `academic-writer` should:
 
 1. recover with `gt prime`
 2. inspect ready work with `bd ready --json`
-3. choose the highest-priority ready bead
-4. map the bead to the correct specialist role
-5. delegate with `gt sling`
-6. wait for the structured handoff
-7. update bead state in `bd`
-8. repeat until no substantive ready work remains
+3. create or inspect the paper convoy
+4. choose the highest-priority ready bead
+5. map the bead to the correct specialist role
+6. delegate with `gt sling`
+7. use `gt handoff` when a fresh session is needed
+8. use `gt resume` to recover delegated work and handoff messages
+9. wait for the structured handoff
+10. update bead state in `bd`
+11. repeat until no substantive ready work remains
+
+Suggested convoy startup:
+
+```bash
+gt convoy create "Paper: <title or topic>" <parent-bead> --owned
+```
+
+Suggested delegation:
+
+```bash
+gt sling <bead-id> <rig>
+```
+
+Suggested session continuity:
+
+```bash
+gt handoff
+gt resume
+```
 
 Suggested role mapping:
 
@@ -72,6 +100,20 @@ Suggested role mapping:
 - discussion and limitations -> `discussion-limitations`
 - conclusion -> `conclusion-writer`
 - reviewer-2 pressure test -> `reviewer-2`
+
+## Standard Article Formula
+
+This repo includes a reusable formula for the classic KKV article workflow:
+
+```bash
+gt formula run kkv-article
+```
+
+Tracked location:
+
+- `.beads/formulas/kkv-article.formula.toml`
+
+Use it when the paper follows the standard architecture and you want a native Gastown workflow entrypoint.
 
 ## If You Are Not In a Gastown Workspace
 

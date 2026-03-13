@@ -1,0 +1,95 @@
+description = "Standard KKV political science article workflow"
+formula = "kkv-article"
+version = 1
+agent = "opencode"
+
+[vars.title]
+description = "Working paper title or topic"
+required = true
+
+[vars.research_question]
+description = "Core research question"
+required = false
+
+[[steps]]
+id = "manuscript-architecture"
+title = "Manuscript architecture"
+description = "Use paper-architect to lock the article arc, section logic, and LaTeX structure for {{title}}."
+agent = "opencode"
+
+[[steps]]
+id = "literature-retrieval"
+title = "Literature retrieval"
+description = "Use literature-finder to retrieve priority literature for {{title}} and store it in docs/literature/."
+needs = ["manuscript-architecture"]
+agent = "opencode"
+
+[[steps]]
+id = "literature-review"
+title = "Literature review"
+description = "Use literature-review to map camps, approaches, debates, and readable sources for {{title}}."
+needs = ["literature-retrieval"]
+agent = "opencode"
+
+[[steps]]
+id = "theory-hypotheses"
+title = "Theory and hypotheses"
+description = "Use theory-hypotheses to derive the stance, mechanisms, and hypotheses for {{title}}."
+needs = ["literature-review"]
+agent = "opencode"
+
+[[steps]]
+id = "data-methods"
+title = "Data and methods"
+description = "Use data-methods to define the empirical design, assumptions, and methods prose for {{title}}."
+needs = ["theory-hypotheses"]
+agent = "opencode"
+
+[[steps]]
+id = "data-analysis"
+title = "Data analysis"
+description = "Use data-analysis to understand, wrangle, and analyze the data for {{title}} with reproducible outputs."
+needs = ["data-methods"]
+agent = "opencode"
+
+[[steps]]
+id = "dataviz-strategy"
+title = "Dataviz strategy"
+description = "Use dataviz-editor to design the figure strategy for {{title}}."
+needs = ["data-analysis"]
+agent = "opencode"
+
+[[steps]]
+id = "ggplot-figures"
+title = "ggplot figures"
+description = "Use ggplot-visualizer to produce grayscale publication-ready figures for {{title}}."
+needs = ["dataviz-strategy"]
+agent = "opencode"
+
+[[steps]]
+id = "results-writing"
+title = "Results writing"
+description = "Use results-writer to turn empirical outputs into disciplined findings prose for {{title}}."
+needs = ["data-analysis", "ggplot-figures"]
+agent = "opencode"
+
+[[steps]]
+id = "discussion-limitations"
+title = "Discussion and limitations"
+description = "Use discussion-limitations to interpret implications and write transparent limits for {{title}}."
+needs = ["results-writing"]
+agent = "opencode"
+
+[[steps]]
+id = "conclusion"
+title = "Conclusion"
+description = "Use conclusion-writer to write the condensed final payoff for {{title}}."
+needs = ["discussion-limitations"]
+agent = "opencode"
+
+[[steps]]
+id = "reviewer-2"
+title = "Reviewer-2 pressure test"
+description = "Use reviewer-2 to pressure-test the full manuscript for contribution, inference, and publishability."
+needs = ["conclusion"]
+agent = "opencode"

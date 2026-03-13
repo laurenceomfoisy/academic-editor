@@ -32,6 +32,8 @@
 - Improved the `academic-planner` -> `academic-writer` handoff so it now uses an explicit ready-to-transfer cue.
 - Refactored the workflow toward a leaner Beads-native OpenCode style centered on `bd prime` and lighter repo instructions.
 - Normalized `AGENTS.md` to the official `bd setup opencode` output rather than a custom Beads boilerplate.
+- Made `academic-writer` more Gastown-native by centering convoys, `gt sling`, and `gt handoff`/`gt resume` in execution mode.
+- Added a tracked `kkv-article` Gastown formula.
 
 ## Next build stones
 

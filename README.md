@@ -37,6 +37,13 @@ Execution front door.
 - integrates outputs into one coherent manuscript
 - ends with a `reviewer-2` pressure test
 
+In Gastown mode, `academic-writer` should:
+
+- initialize the project as a rig with `gt init` if needed
+- create or manage a paper convoy
+- delegate work with `gt sling`
+- use `gt handoff` and `gt resume` for session continuity
+
 ## Subagent Roster
 
 ### Structure and Orchestration
@@ -127,6 +134,12 @@ bd setup opencode
 This repository now prefers the official `bd setup opencode` output over custom AGENTS boilerplate.
 That keeps the OpenCode integration aligned with Beads defaults and lets `bd prime` provide the current workflow context dynamically.
 
+For Gastown-native execution, initialize the project as a rig when needed:
+
+```bash
+gt init
+```
+
 ### Installed OpenCode Agents
 
 After installation, the OpenCode config should include:
@@ -164,6 +177,14 @@ This project also adopts the Gas Town philosophy.
 - each paper is treated as a convoy
 - specialist subagents act like polecats
 - recovery should use `gt prime` when inside a Gastown workspace
+
+Execution commands to prefer in Gastown mode:
+
+- `gt convoy create`
+- `gt sling`
+- `gt handoff`
+- `gt resume`
+- `gt formula run kkv-article`
 
 See `docs/gastown-workflow.md`.
 
