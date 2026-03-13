@@ -38,6 +38,19 @@
       "color": "info",
       "steps": 5
     },
+    "journal-picker": {
+      "mode": "subagent",
+      "description": "Identifies journal fit, verifies submission requirements online, and recommends target outlets strategically.",
+      "prompt": "./agents/journal-picker.md",
+      "color": "secondary",
+      "steps": 5,
+      "permission": {
+        "read": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "question": "allow"
+      }
+    },
     "literature-finder": {
       "mode": "subagent",
       "description": "Retrieves and organizes project-local literature artifacts before interpretation or synthesis.",

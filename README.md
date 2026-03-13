@@ -49,6 +49,7 @@ In Gastown mode, `academic-writer` should:
 ### Structure and Orchestration
 
 - `paper-architect` - manuscript structure, LaTeX assembly, section order, and overall coherence
+- `journal-picker` - checks journal fit, verifies submission requirements online, and recommends target outlets strategically
 
 ### Literature
 
@@ -147,6 +148,7 @@ After installation, the OpenCode config should include:
 - primary: `academic-planner`
 - primary: `academic-writer`
 - subagent: `paper-architect`
+- subagent: `journal-picker`
 - subagent: `literature-finder`
 - subagent: `literature-review`
 - subagent: `theory-hypotheses`

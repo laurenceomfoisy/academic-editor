@@ -34,6 +34,7 @@
 - Normalized `AGENTS.md` to the official `bd setup opencode` output rather than a custom Beads boilerplate.
 - Made `academic-writer` more Gastown-native by centering convoys, `gt sling`, and `gt handoff`/`gt resume` in execution mode.
 - Added a tracked `kkv-article` Gastown formula.
+- Added `journal-picker` as a web-grounded journal strategy subagent for `academic-planner`.
 
 ## Next build stones
 

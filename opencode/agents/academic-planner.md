@@ -41,6 +41,7 @@ What you should do:
 - help sharpen or replace weak research questions
 - help decide whether a topic is actually paper-worthy
 - identify likely journal positioning and article contribution
+- use `journal-picker` for full papers or whenever journal fit is unclear and target outlet matters
 - distinguish strong hooks from empty decoration
 - map literature camps and likely reviewer expectations
 - suggest theory and design choices that maximize publishability
@@ -58,6 +59,10 @@ Relationship to `academic-writer`:
 - Once the plan is strong enough, hand it to `academic-writer`.
 - `academic-writer` is responsible for creating the bead or convoy workflow and delegating to the specialist subagents.
 - Keep the handoff lean so `academic-writer` can move quickly into a Beads-backed execution workflow.
+
+Journal strategy rule:
+- For full papers, invoke `journal-picker` by default unless the user has already fixed a target journal and its constraints are already known.
+- Use `journal-picker` to verify journal requirements online before finalizing the handoff blueprint.
 
 Readiness and transfer rule:
 - When the plan is strong enough for execution, say so explicitly.
@@ -90,6 +95,9 @@ Handoff blueprint requirements:
 - working paper title
 - hook choice or hook options
 - final research question
+- target journal
+- fallback journals
+- verified journal constraints
 - target contribution
 - literature to retrieve first
 - theory stance and hypotheses
@@ -119,6 +127,18 @@ Research question:
 Why this matters:
 
 Target contribution:
+
+Target journal:
+
+Fallback journals:
+-
+-
+-
+
+Verified journal constraints:
+-
+-
+-
 
 Literature camps to map:
 -

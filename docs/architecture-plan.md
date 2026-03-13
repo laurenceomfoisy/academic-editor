@@ -30,6 +30,7 @@ The default article structure follows a classic KKV-oriented format:
 - `academic-planner` - primary planning mentor
 - `academic-writer` - primary orchestrator
 - `paper-architect` - manuscript-level structure and LaTeX assembly subagent
+- `journal-picker` - journal-fit and submission-strategy subagent
 - `literature-finder` - retrieval-first source acquisition subagent
 - `literature-review` - literature mapping and synthesis subagent
 - `theory-hypotheses` - theory and hypothesis formation subagent
@@ -64,6 +65,12 @@ The default article structure follows a classic KKV-oriented format:
   - owns manuscript-level structure and LaTeX assembly
   - controls section ordering, figure placement, appendix logic, and cross-references
   - checks that the paper tells a coherent and interesting story
+
+- `journal-picker`
+  - identifies the best journal targets for the paper
+  - verifies submission requirements online
+  - recommends ambitious, realistic, and safety outlets
+  - tells the planner how journal choice should shape the article
 
 ### Literature
 
@@ -125,21 +132,22 @@ The default article structure follows a classic KKV-oriented format:
 ## Workflow Vision
 
 1. `academic-planner` plans the paper and produces the blueprint
-2. `academic-planner` emits an explicit ready transfer cue
-3. `academic-writer` starts the execution workflow from the approved blueprint
-4. `paper-architect` proposes the manuscript arc
-5. `literature-finder` retrieves sources into `docs/literature/`
-6. `literature-review` maps the field
-7. `theory-hypotheses` builds stance and hypotheses
-8. `data-methods` writes design and code support
-9. `data-analysis` executes the empirical analysis
-10. `dataviz-editor` proposes the figure strategy
-11. `ggplot-visualizer` builds grayscale figures
-12. `results-writer` writes the empirical narrative
-13. `discussion-limitations` interprets and bounds claims
-14. `conclusion-writer` writes the ending
-15. `paper-architect` assembles the LaTeX paper
-16. `reviewer-2` pressure-tests the manuscript
+2. `journal-picker` verifies target-journal strategy when needed
+3. `academic-planner` emits an explicit ready transfer cue
+4. `academic-writer` starts the execution workflow from the approved blueprint
+5. `paper-architect` proposes the manuscript arc
+6. `literature-finder` retrieves sources into `docs/literature/`
+7. `literature-review` maps the field
+8. `theory-hypotheses` builds stance and hypotheses
+9. `data-methods` writes design and code support
+10. `data-analysis` executes the empirical analysis
+11. `dataviz-editor` proposes the figure strategy
+12. `ggplot-visualizer` builds grayscale figures
+13. `results-writer` writes the empirical narrative
+14. `discussion-limitations` interprets and bounds claims
+15. `conclusion-writer` writes the ending
+16. `paper-architect` assembles the LaTeX paper
+17. `reviewer-2` pressure-tests the manuscript
 
 Each step should correspond to a bead-backed convoy task and end with a structured handoff to the next specialist role.
 
