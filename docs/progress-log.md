@@ -31,6 +31,7 @@
 - Added `data-analysis` as a true empirical execution subagent distinct from `data-methods`.
 - Improved the `academic-planner` -> `academic-writer` handoff so it now uses an explicit ready-to-transfer cue.
 - Refactored the workflow toward a leaner Beads-native OpenCode style centered on `bd prime` and lighter repo instructions.
+- Normalized `AGENTS.md` to the official `bd setup opencode` output rather than a custom Beads boilerplate.
 
 ## Next build stones
 

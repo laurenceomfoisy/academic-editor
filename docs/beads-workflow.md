@@ -4,7 +4,7 @@ This project uses `bd` as the required workflow tracker for substantive `academi
 
 Preferred OpenCode integration style:
 - keep repo-level instructions lean
-- use `bd setup opencode` in the target project
+- use the official `bd setup opencode` output in the target project
 - rely on `bd prime` for current workflow context
 
 ## Why

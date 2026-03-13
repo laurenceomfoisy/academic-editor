@@ -124,7 +124,8 @@ bd init
 bd setup opencode
 ```
 
-This keeps the project instructions lean and lets `bd prime` provide the current workflow context dynamically.
+This repository now prefers the official `bd setup opencode` output over custom AGENTS boilerplate.
+That keeps the OpenCode integration aligned with Beads defaults and lets `bd prime` provide the current workflow context dynamically.
 
 ### Installed OpenCode Agents
 
